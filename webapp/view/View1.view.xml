@@ -1,0 +1,50 @@
+<mvc:View xmlns:table="sap.ui.table"
+	xmlns="sap.m"
+		xmlns:core="sap.ui.core"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
+	xmlns:smartTable="sap.ui.comp.smarttable"
+	xmlns:html="http://www.w3.org/1999/xhtml"
+    controllerName="infy.akm.project1.controller.View1"
+	height="100%">
+    <Page id="page" title="{i18n>title}">
+    <smartFilterBar:SmartFilterBar id='_mysmtFtr' entitySet="Products" search="onPressGo" >
+	<smartFilterBar:controlConfiguration>
+	<smartFilterBar:ControlConfiguration id='conf' key="Discontinued" label="Discontinued" visibleInAdvancedArea='true'>
+	<smartFilterBar:customControl>
+	<ComboBox id='_myCustum' items='{/Products}'>
+	<core:Item id='core' key="{Discontinued}" text="{Discontinued}" />
+
+	</ComboBox>
+	</smartFilterBar:customControl>
+	</smartFilterBar:ControlConfiguration>
+
+	<smartFilterBar:ControlConfiguration id='conf2' key="ProductID" label="Product ID" visibleInAdvancedArea='true'>
+	
+	</smartFilterBar:ControlConfiguration>
+	  </smartFilterBar:controlConfiguration>
+</smartFilterBar:SmartFilterBar>
+	
+	<smartTable:SmartTable id='mysmartTable'  smartFilterId="_mysmtFtr" enableAutoBinding='true' entitySet='Products'  header='Suppliers data' tableType="ResponsiveTable" showRowCount="true" beforeRebindTable='onBeforeRebindTable1' initiallyVisibleFields="ProductID,UnitPrice">
+    <Table id='mytable' mode="MultiSelect">
+	<columns>
+	<Column id='-cusclm' >
+	<Text id='cusTxt' text='Link'/>
+	</Column>
+	</columns>
+	<ColumnListItem id="_IDGenColumnListItem" >
+	<cells>
+	
+		<Link id="_IDGenLink" text='{UnitPrice}' press="onNavtoApp" visible="{=${ProductID} >10}"></Link>
+
+
+	</cells>
+	</ColumnListItem>
+	
+
+	</Table>
+	</smartTable:SmartTable>
+
+	<Button id='_btn' text ='Navto2' press='onNavPress'/>
+	</Page>
+</mvc:View>
