@@ -1,6 +1,7 @@
 sap.ui.define([
     "sap/ui/core/mvc/Controller"
 ],
+git
 function (Controller) {
     "use strict";
 
