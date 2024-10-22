@@ -3,11 +3,27 @@
         "results": [
             {
                 "EmpName": "Arun",
-                "EmpId": 1366468
+                "EmpId": 1366468,
+                "EmpAddress":"Hyderabad",
+                "Empsal":"10k",
+                "EmpExp":"3",
+                "EmpSKil": "SAP"
             },
             {
                 "EmpName": "Mariyala",
-                "EmpId": 1366469
+                "EmpId": 1366469,
+                "EmpAddress":"Karimnagar",
+                "Empsal":"15k",
+                "EmpExp":"4",
+                "EmpSKil": "ABAP"
+            },
+            {
+                "EmpName": "Mariyala",
+                "EmpId": 136670,
+                "EmpAddress":"Mumbai",
+                "Empsal":"25k",
+                "EmpExp":"5",
+                "EmpSKil": "Odata"
             }
         ]
     }

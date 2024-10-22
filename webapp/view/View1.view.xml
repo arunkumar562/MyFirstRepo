@@ -4,11 +4,13 @@
 	xmlns:mvc="sap.ui.core.mvc"
 	xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
 	xmlns:smartTable="sap.ui.comp.smarttable"
+	xmlns:custum='infy.akm.project1.controls'
 	xmlns:html="http://www.w3.org/1999/xhtml"
     controllerName="infy.akm.project1.controller.View1"
 	height="100%">
     <Page id="page" title="{i18n>title}">
-    <smartFilterBar:SmartFilterBar id='_mysmtFtr' entitySet="Products" search="onPressGo" >
+    <smartFilterBar:SmartFilterBar id='_mysmtFtr' entitySet="Products" search="onPressGo" persistencyKey='mysmartfilter' filterChange="onfilterChange" initialise="oninitise"
+	afterVariantLoad="onaftervload" afterVariantSave="onaftervSve" beforeVariantFetch="onbeforevFetch" beforeVariantSave="onbeforevS" initialized="oninitized">
 	<smartFilterBar:controlConfiguration>
 	<smartFilterBar:ControlConfiguration id='conf' key="Discontinued" label="Discontinued" visibleInAdvancedArea='true'>
 	<smartFilterBar:customControl>
@@ -45,6 +47,10 @@
 	</Table>
 	</smartTable:SmartTable>
 
-	<Button id='_btn' text ='Navto2' press='onNavPress'/>
+	<custum:customControl id="hoverButton1" text="hello" press='onNavPress'
+ allowHover="true"
+ hoverText="{=${Seatsmax} - ${Seatsocc}}"
+ hover="onHover"
+/>
 	</Page>
 </mvc:View>

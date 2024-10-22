@@ -1,36 +1,171 @@
-<mvc:View xmlns:table="sap.ui.table"
-	xmlns="sap.m"
-		xmlns:core="sap.ui.core"
-	xmlns:mvc="sap.ui.core.mvc"
-	xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
-	xmlns:smartTable="sap.ui.comp.smarttable"
+<mvc:View
+    xmlns:table="sap.ui.table"
+    xmlns="sap.m"
+    xmlns:unified="sap.ui.unified"
+    xmlns:core="sap.ui.core"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
+    xmlns:smartTable="sap.ui.comp.smarttable"
     xmlns:tableA='sap.ui.table'
-	xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns:html="http://www.w3.org/1999/xhtml"
     controllerName="infy.akm.project1.controller.View2"
-	height="100%">
-    <Page id="page2" title="{i18n>title}">
-<smartFilterBar:SmartFilterBar id='smtF' entitySet="Employees" visible="true" useDateRangeType="true">
-<smartFilterBar:controlConfiguration>
-<smartFilterBar:ControlConfiguration id="_IDGenControlConfiguration" visibleInAdvancedArea ='true' label="date testing" key='BirthDate' controlType="date">
- <smartFilterBar:customControl>
-<DateTimePicker id="_IDGenDatePicker" ></DateTimePicker>
-</smartFilterBar:customControl> 
-</smartFilterBar:ControlConfiguration>
+    height="100%"
+>
+    <Page
+        id="page2"
+        title="{i18n>title}"
+    >
+        <smartFilterBar:SmartFilterBar
+            id='smtF'
+            entitySet="Employees"
+            visible="true"
+            useDateRangeType="true"
+        >
+            <smartFilterBar:controlConfiguration>
+                <smartFilterBar:ControlConfiguration
+                    id="_IDGenControlConfiguration"
+                    visibleInAdvancedArea='true'
+                    label="date testing"
+                    key='BirthDate'
+                    controlType="date"
+                >
+                    <smartFilterBar:customControl>
+                        <DateTimePicker id="_IDGenDatePicker" />
+                    </smartFilterBar:customControl>
+                </smartFilterBar:ControlConfiguration>
+            </smartFilterBar:controlConfiguration>
+        </smartFilterBar:SmartFilterBar>
+        <smartTable:SmartTable
+            id='_empT'
+            smartFilterId="smtF"
+            entitySet="Employees"
+            enableAutoBinding="true"
+            initiallyVisibleFields="EmployeeID,Title,BirthDate,HireDate,Address"
+            beforeRebindTable="onbeforebindTable"
+        >
+            <table:Table id='analyticalTable' />
+        </smartTable:SmartTable>
 
-</smartFilterBar:controlConfiguration>
+        <Button
+            id="_IDGenButton"
+            text='Set Data'
+            press='onclick'
+        />
+        <Table
+            id="_IDGenTable"
+            items='{TestModel>/d/results/}'
+            mode="MultiSelect"
+            selectionChange='onSelect'
+        >
+            <columns>
+                <Column id="_IDGenColumn">
+                    <Text
+                        id="_IDGenText1"
+                        text='Name'
+                    />
+                </Column>
+                <Column id="_IDGenColumn-2">
+                    <Text
+                        id="_IDGenText2"
+                        text='Emp ID'
+                    />
+                </Column>
+            </columns>
+            <items>
+                <ColumnListItem id="_IDGenColumnListItem1">
+                    <cells>
+                        <Text
+                            id="_IDGenText3"
+                            text='{TestModel>EmpName}'
+                        />
+                        <Text
+                            id="_IDGenText4"
+                            text='{TestModel>EmpId}'
+                        />
+                    </cells>
+                </ColumnListItem>
+            </items>
+        </Table>
+        <DatePicker
+            id="datePicker"
+            afterValueHelpOpen='onopen'
+            navigate='onnavigate'
+        />
+
+        <tableA:Table
+            id="_IDGenTable1" alternateRowColors='true' enableColumnFreeze='true' 
+            rows='{TestModel>/d/results/}'> 
+            <tableA:columns>
+                <tableA:Column 
+                filterProperty='EmpId'
+                sortProperty="EmpId"
+                showSortMenuEntry="true"
+                defaultFilterOperator="EQ"
+                showFilterMenuEntry='true'
+                filterType="sap.ui.model.type.Integer"
+                    id="_IDGenColumn1"
+                    label='EMP ID'>
+             <tableA:template>
+             <Input id="_IDGenInput" value='{TestModel>EmpId}'/>
+             </tableA:template>
+             <tableA:customData>
+             <core:CustomData key='myCustumdata' value='\{"columnKey": "EmpId", "columnIndex" : "3", "leadingProperty": "EmpId", "sortProperty" :"EmpId" }'>
+             
+             </core:CustomData>
+             
+             </tableA:customData>
+             </tableA:Column>
+           
+                <tableA:Column id="_IDGenColumn2">
+                    <tableA:label>
+                        <Text
+                            id="_IDGenText"
+                            text='EMP Name'
+                        />
+                    </tableA:label>
+                    <tableA:template>
+             <Input id="_IDGenInput1" value='{TestModel>EmpName}'/>
+             </tableA:template>
+                </tableA:Column>
+
+                   <tableA:Column id="_IDGenColumn3">
+                    <tableA:label>
+                        <Text
+                            id='_lab'
+                            text='EMP EXP'
+                        />
+                    </tableA:label>
+                    <tableA:template>
+             <Input id="_IDGenInput2" value='{TestModel>EmpExp}'/>
+             </tableA:template>
+                </tableA:Column>
 
 
-</smartFilterBar:SmartFilterBar>
-<smartTable:SmartTable id='_empT' smartFilterId="smtF" entitySet="Employees"  enableAutoBinding="true"  initiallyVisibleFields="EmployeeID,Title,BirthDate,HireDate,Address" beforeRebindTable="onbeforebindTable">
-<table:Table id='analyticalTable'>
+                 <tableA:Column id="_IDGenColumn4">
+                    <tableA:label>
+                        <Text
+                            id='_lab1'
+                            text='EMPsal'
+                        />
+                    </tableA:label>
+                    <tableA:template>
+             <Input id="_IDGenInput3" value='{TestModel>Empsal}'/>
+             </tableA:template>
+                </tableA:Column>
 
 
-
-</table:Table>
-
-
-</smartTable:SmartTable>
-
-
-	</Page>
-    </mvc:View>
+                 <tableA:Column id="_IDGenColumn5">
+                    <tableA:label>
+                        <Text
+                            id='_lab5'
+                            text='EMPAdd'
+                        />
+                    </tableA:label>
+                    <tableA:template>
+             <Input id="_IDGenInput5" value='{TestModel>EmpAddress}'/>
+             </tableA:template>
+                </tableA:Column>
+            </tableA:columns>
+        </tableA:Table>
+    </Page>
+</mvc:View>
