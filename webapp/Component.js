@@ -9,7 +9,7 @@ sap.ui.define([
     ],
     function (UIComponent, Device, models) {
         "use strict";
-//Hello
+//HelloArun
         return UIComponent.extend("infy.akm.project1.Component", {
             metadata: {
                 manifest: "json"
